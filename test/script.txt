@@ -1,0 +1,8 @@
+help
+show
+filter_less_than_type weight 500
+print_descending
+remove_greater_key 150
+remove_all_by_age 100005
+replace_if_greater 1,1,"NewDragon",3.0,-50,14.03.2018,5,"It is a new Dragon (but older)!",600,WATER,2.0
+show

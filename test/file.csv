@@ -1,0 +1,5 @@
+1,1,"NewDragon",0.0,0,14.03.2018,3,"It is a new Dragon!",300,FIRE,1.0
+11,2,"OldDragon",314.15,0,14.03.2002,100005,"It is an old Dragon!",9000,AIR,3.0
+111,3,"HeavyDragon",250.0,300,14.03.2021,2002,"It is a very heavy Dragon!",100500,WATER,4.0
+1111,4,"IllegalDragon",-300.0,100,14.03.2021,-2000,"This Dragon is Illegal!",-69,UNDERGROUND,5.5
+11111,5,"AnotherDragon",200.0,-200,14.03.2021,5505,"And another Dragon",500,FIRE,5.55555
