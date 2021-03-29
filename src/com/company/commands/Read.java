@@ -1,8 +1,8 @@
 package com.company.commands;
 
-import com.company.collectionmanagement.DragonHolder;
+import com.company.storables.DragonHolder;
 import com.company.storables.Dragon;
-import com.company.ui.UserRunnable;
+import com.company.ui.ClientClass;
 
 import java.io.*;
 import java.util.Arrays;
@@ -24,7 +24,7 @@ public class Read implements Command {
     @Override
     public String execute(String argument) {
         response = "";
-        File file = UserRunnable.getFile();
+        File file = ClientClass.getFile();
         try {
             BufferedInputStream fileReader = new BufferedInputStream(new FileInputStream(file));
             StringBuilder stringBuilder = new StringBuilder();

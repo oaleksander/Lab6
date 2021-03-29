@@ -1,8 +1,10 @@
 package com.company.commands;
 
-import com.company.collectionmanagement.DragonHolder;
+import com.company.storables.Dragon;
+import com.company.storables.DragonHolder;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Show implements Command {
     String response;
@@ -17,7 +19,7 @@ public class Show implements Command {
 
     public String execute(String argument) {
         response = "Collection:\n";
-        Arrays.stream(DragonHolder.getCollection().values().toArray()).forEach(element -> response += element.toString() + "\n");
-        return response;
+        DragonHolder.getCollection().values().stream().sorted(Comparator.comparing(Dragon::getName)).forEach(element -> response += element.toString() + "\n");
+        return response.substring(0, response.length() - 1);
     }
 }

@@ -1,6 +1,6 @@
 package com.company.commands;
 
-import com.company.collectionmanagement.DragonHolder;
+import com.company.storables.DragonHolder;
 import com.company.storables.Coordinates;
 import com.company.storables.Dragon;
 import com.company.storables.DragonHead;

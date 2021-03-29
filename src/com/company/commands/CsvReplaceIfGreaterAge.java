@@ -1,7 +1,7 @@
 package com.company.commands;
 
-import com.company.collectionmanagement.DragonFactory;
-import com.company.collectionmanagement.DragonHolder;
+import com.company.storables.DragonUtils;
+import com.company.storables.DragonHolder;
 import com.company.storables.Dragon;
 
 import java.util.Date;
@@ -35,7 +35,7 @@ public class CsvReplaceIfGreaterAge implements Command {
                 if (currentDragon == null)
                     throw new IllegalArgumentException("No Dragon found with key \"" + key + "\".");
                 Dragon newDragon = new Dragon(splitLine[1]);
-                newDragon.setId(DragonFactory.getNewId());
+                newDragon.setId(DragonUtils.getNewId());
                 newDragon.setCreationDate(new Date());
                 if (newDragon.getAge() > currentDragon.getAge()) {
                     DragonHolder.getCollection().replace(Integer.parseInt(splitLine[0]), newDragon);

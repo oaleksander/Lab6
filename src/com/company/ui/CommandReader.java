@@ -3,11 +3,12 @@ package com.company.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 
 /**
  * Class designed to get commands from buffered readers and strings
  *
- * @see UserRunnable
+ * @see ClientClass
  */
 public class CommandReader {
 
@@ -83,9 +84,9 @@ public class CommandReader {
     /**
      * User command class
      */
-    public static class UserCommand {
-        public String Command = null;
-        public String Argument = null;
+    public static class UserCommand implements Serializable{
+        public String Command = "";
+        public String Argument = "";
 
         /**
          * User command constructor with argument

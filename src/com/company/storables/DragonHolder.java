@@ -1,4 +1,4 @@
-package com.company.collectionmanagement;
+package com.company.storables;
 
 import com.company.storables.Dragon;
 

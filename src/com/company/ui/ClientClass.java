@@ -3,11 +3,13 @@ package com.company.ui;
 import com.company.commands.*;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Main command execution runnable
  */
-public class UserRunnable implements Runnable {
+public class ClientClass implements Runnable {
 
     /**
      * All possible commands
@@ -96,7 +98,7 @@ public class UserRunnable implements Runnable {
      * @param printStream       PrintStream to output to
      * @param inputStream       InputStream to input from
      */
-    public UserRunnable(Command[] availableCommands, PrintStream printStream, InputStream inputStream) {
+    public ClientClass(Command[] availableCommands, PrintStream printStream, InputStream inputStream) {
         this.availableCommands = availableCommands;
         this.printStream = printStream;
         this.commandReader = new CommandReader(new BufferedReader(new InputStreamReader(inputStream)));
@@ -125,25 +127,24 @@ public class UserRunnable implements Runnable {
      *
      * @param userCommand User command
      */
-    public void Execute(CommandReader.UserCommand userCommand) {
-        boolean commandIsFound = false;
-        String response = "Command gave no response.";
+    public void execute(CommandReader.UserCommand userCommand) {
+        AtomicReference<String> response = new AtomicReference<>("Command gave no response.");
+        if(Arrays.stream(availableCommands).parallel().noneMatch(command -> command.getLabel().equals(userCommand.Command)))
+        {
+            response.set("Unknown command \"" + userCommand.Command + "\". try \"help\" for list of commands");
+        }
+        else
         try {
-            for (Command command : availableCommands) {
-                if (userCommand.Command.equals(command.getLabel()) && !commandIsFound) {
-                    commandIsFound = true;
-                    response = command.execute(userCommand.Argument);
-                }
-            }
-            if (!commandIsFound)
-                response = "Unknown command \"" + userCommand.Command + "\". try \"help\" for list of commands";
+            Arrays.stream(availableCommands).forEach(command -> {
+                if (userCommand.Command.equals(command.getLabel())) response.set(command.execute(userCommand.Argument));
+            });
         } catch (IllegalArgumentException e) {
-            response = e.getMessage();
+            response.set(e.getMessage());
         } catch (Exception e) {
-            response = "Unexpected error: " + e.getMessage() + ". This is a bug!";
+            response.set("Unexpected error: " + e.getMessage() + ". This is a bug!");
             e.printStackTrace();
         }
-        printStream.println(response);
+        printStream.println(response.get());
     }
 
     /**
@@ -153,8 +154,12 @@ public class UserRunnable implements Runnable {
     public void run() {
         //noinspection InfiniteLoopStatement
         for (; ; ) {
-            Execute(commandReader.readCommandFromBufferedReader());
+            execute(commandReader.readCommandFromBufferedReader());
         }
+    }
+
+    public CommandReader getCommandReader() {
+        return commandReader;
     }
 }
 

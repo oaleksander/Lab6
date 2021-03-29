@@ -1,7 +1,7 @@
 package com.company.commands;
 
-import com.company.collectionmanagement.DragonHolder;
-import com.company.ui.UserRunnable;
+import com.company.storables.DragonHolder;
+import com.company.ui.ClientClass;
 
 import java.io.*;
 
@@ -19,7 +19,7 @@ public class Save implements Command {
 
     @Override
     public String execute(String argument) {
-        File file = UserRunnable.getFile();
+        File file = ClientClass.getFile();
         try {
             file.createNewFile();
             OutputStreamWriter fileWriter = new OutputStreamWriter(new FileOutputStream(file));

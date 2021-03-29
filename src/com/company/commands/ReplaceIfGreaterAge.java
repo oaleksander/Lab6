@@ -1,7 +1,7 @@
 package com.company.commands;
 
-import com.company.collectionmanagement.DragonFactory;
-import com.company.collectionmanagement.DragonHolder;
+import com.company.storables.DragonUtils;
+import com.company.storables.DragonHolder;
 import com.company.storables.Dragon;
 
 public class ReplaceIfGreaterAge implements Command {
@@ -34,7 +34,7 @@ public class ReplaceIfGreaterAge implements Command {
         if (currentDragon == null)
             throw new IllegalArgumentException("No Dragon found with key \"" + key + "\".");
         else {
-            Dragon newDragon = DragonFactory.inputNewDragonFromConsole();
+            Dragon newDragon = DragonUtils.inputNewDragonFromConsole();
             if (newDragon.getAge() > currentDragon.getAge()) {
                 DragonHolder.getCollection().replace(key, newDragon);
                 return "Remove successful.";

@@ -1,7 +1,7 @@
 package com.company.commands;
 
-import com.company.collectionmanagement.DragonFactory;
-import com.company.collectionmanagement.DragonHolder;
+import com.company.storables.DragonUtils;
+import com.company.storables.DragonHolder;
 
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -45,7 +45,7 @@ public class UpdateID implements Command {
         });
         if (!found.get()) throw new IllegalArgumentException("Dragon with id '" + argument + "' not found");
         else
-            DragonHolder.getCollection().put(dragonKey.get(), DragonFactory.inputDragonFromConsole(dragonId.get(), dragonCreationDate.get()));
+            DragonHolder.getCollection().put(dragonKey.get(), DragonUtils.inputDragonFromConsole(dragonId.get(), dragonCreationDate.get()));
         return "Update successful.";
     }
 }

@@ -1,7 +1,5 @@
 package com.company.storables;
 
-import com.company.collectionmanagement.DragonFactory;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
@@ -29,9 +27,11 @@ public class Dragon implements Comparable<Dragon> {
         String[] splitString = csvString.split(",");
         try {
             if (splitString[0].isBlank())
-                setId(DragonFactory.getNewId());
+                setId(DragonUtils.getNewId());
             else
                 try {
+                    if(Long.parseLong(splitString[0]) == -1L)
+                        setId(DragonUtils.getNewId());
                     setId(Long.parseLong(splitString[0]));
                 } catch (NumberFormatException e) {
                     throw new IllegalArgumentException("Can't parse Dragon id from " + splitString[0] + ".");

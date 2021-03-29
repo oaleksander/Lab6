@@ -1,6 +1,6 @@
 package com.company.commands;
 
-import com.company.collectionmanagement.DragonHolder;
+import com.company.storables.DragonHolder;
 import com.company.storables.Dragon;
 
 import java.util.Comparator;
@@ -20,6 +20,6 @@ public class PrintDescending implements Command {
         response = "Sorted collection:\n";
         DragonHolder.getCollection().values().stream().sorted(Comparator.comparingLong(Dragon::getAge).reversed())
                 .forEachOrdered(element -> response += element.toString() + "\n");
-        return response;
+        return response.substring(0, response.length() - 1);
     }
 }

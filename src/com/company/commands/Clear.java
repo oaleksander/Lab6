@@ -1,6 +1,6 @@
 package com.company.commands;
 
-import com.company.collectionmanagement.DragonHolder;
+import com.company.storables.DragonHolder;
 
 public class Clear implements Command {
     public String getLabel() {

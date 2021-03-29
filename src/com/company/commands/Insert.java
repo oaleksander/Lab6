@@ -1,7 +1,7 @@
 package com.company.commands;
 
-import com.company.collectionmanagement.DragonFactory;
-import com.company.collectionmanagement.DragonHolder;
+import com.company.storables.DragonUtils;
+import com.company.storables.DragonHolder;
 
 public class Insert implements Command {
     public String getLabel() {
@@ -20,7 +20,7 @@ public class Insert implements Command {
         if (argument == null || argument.isEmpty())
             throw new IllegalArgumentException("Please specify Dragon key.");
         try {
-            DragonHolder.getCollection().put(Integer.parseInt(argument), DragonFactory.inputNewDragonFromConsole());
+            DragonHolder.getCollection().put(Integer.parseInt(argument), DragonUtils.inputNewDragonFromConsole());
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Illegal key: " + e.getMessage() + ".");
         }

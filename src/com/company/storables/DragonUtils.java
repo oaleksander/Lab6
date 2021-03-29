@@ -1,9 +1,5 @@
-package com.company.collectionmanagement;
+package com.company.storables;
 
-import com.company.storables.Coordinates;
-import com.company.storables.Dragon;
-import com.company.storables.DragonHead;
-import com.company.storables.DragonType;
 import com.company.ui.CommandReader;
 
 import java.util.ArrayList;
@@ -14,7 +10,7 @@ import java.util.Date;
 /**
  * Class that is needed to create dragons
  */
-public class DragonFactory {
+public class DragonUtils {
 
     /**
      * Gew unique Dragon ID
