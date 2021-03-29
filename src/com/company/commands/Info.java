@@ -2,7 +2,7 @@ package com.company.commands;
 
 import com.company.storables.DragonHolder;
 
-public class Info implements Command {
+public class Info implements CommandAction {
     public String getLabel() {
         return "info";
     }

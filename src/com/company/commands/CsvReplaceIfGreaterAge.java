@@ -1,12 +1,12 @@
 package com.company.commands;
 
-import com.company.storables.DragonUtils;
-import com.company.storables.DragonHolder;
 import com.company.storables.Dragon;
+import com.company.storables.DragonHolder;
+import com.company.storables.DragonUtils;
 
 import java.util.Date;
 
-public class CsvReplaceIfGreaterAge implements Command {
+public class CsvReplaceIfGreaterAge implements CommandAction {
     @Override
     public String getLabel() {
         return "replace_if_greater_csv";

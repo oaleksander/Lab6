@@ -1,11 +1,11 @@
 package com.company.commands;
 
 import com.company.storables.DragonHolder;
-import com.company.ui.ClientClass;
+import com.company.ui.CommandExecutor;
 
 import java.io.*;
 
-public class Save implements Command {
+public class Save implements CommandAction {
 
     @Override
     public String getLabel() {
@@ -19,7 +19,7 @@ public class Save implements Command {
 
     @Override
     public String execute(String argument) {
-        File file = ClientClass.getFile();
+        File file = CommandExecutor.getFile();
         try {
             file.createNewFile();
             OutputStreamWriter fileWriter = new OutputStreamWriter(new FileOutputStream(file));

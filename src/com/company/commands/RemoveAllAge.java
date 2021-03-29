@@ -4,7 +4,7 @@ import com.company.storables.DragonHolder;
 
 import java.util.LinkedList;
 
-public class RemoveAllAge implements Command {
+public class RemoveAllAge implements CommandAction {
     @Override
     public String getLabel() {
         return "remove_all_by_age";

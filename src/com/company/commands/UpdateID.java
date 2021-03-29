@@ -1,13 +1,13 @@
 package com.company.commands;
 
-import com.company.storables.DragonUtils;
 import com.company.storables.DragonHolder;
+import com.company.storables.DragonUtils;
 
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class UpdateID implements Command {
+public class UpdateID implements CommandAction {
     @Override
     public String getLabel() {
         return "update";

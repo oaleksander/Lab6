@@ -1,9 +1,9 @@
 package com.company.commands;
 
-import com.company.storables.DragonHolder;
 import com.company.storables.Dragon;
+import com.company.storables.DragonHolder;
 
-public class RemoveKey implements Command {
+public class RemoveKey implements CommandAction {
     @Override
     public String getLabel() {
         return "remove_key";

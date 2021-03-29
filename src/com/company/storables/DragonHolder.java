@@ -1,7 +1,5 @@
 package com.company.storables;
 
-import com.company.storables.Dragon;
-
 import java.util.Date;
 import java.util.Hashtable;
 

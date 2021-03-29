@@ -1,45 +1,123 @@
- package com.company;
+package com.company;
 
 import com.company.commands.Read;
+import com.company.ui.CommandExecutor;
 import com.company.ui.CommandReader;
-import com.company.ui.ClientClass;
 
 import java.io.*;
-import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.*;
-import java.util.Iterator;
-import java.util.Set;
+import java.nio.channels.DatagramChannel;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
- /**
+/**
  * Main client class
  */
 public class Server {
 
-     private static final String POISON_PILL = "POISON_PILL";
-     private static final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-     private static final PrintStream serverResponseStream = new PrintStream(outputStream);
-     private static final ClientClass userClass = new ClientClass(ClientClass.allCommands, serverResponseStream, System.in);
-     private static DatagramChannel datagramChannel;
+    private static final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    private static final PrintStream serverResponseStream = new PrintStream(outputStream);
+    private static final CommandExecutor localExecutor = new CommandExecutor(CommandExecutor.allCommands, System.out);
+    private static final CommandExecutor userExecutor = new CommandExecutor(CommandExecutor.userCommands, serverResponseStream);
 
     /**
      * Main server function
      *
      * @param args filename
-     * @see com.company.commands.Save
-     * @see Read
-     * @see ClientClass
+     * @see CommandExecutor
+     * @see Client
      */
     public static void main(String[] args) {
-        System.out.println("Welcome to interactive Dragon Hashtable server. To get help, enter \"help\".");
+        System.out.println("Starting Server...");
+        System.out.println("Reading collection from file...");
+        readCollectionFromFile(args);
+        BufferedReader localInput = new BufferedReader(new InputStreamReader(System.in));
+        Selector selector = null;
+        ByteBuffer byteBuffer = ByteBuffer.allocate(65536);
+        try {
+            selector = Selector.open();
+            selector.wakeup();
+            DatagramChannel datagramChannel = DatagramChannel.open();
+            datagramChannel.bind(new InetSocketAddress("localhost", 3333));
+            datagramChannel.configureBlocking(false);
+            datagramChannel.register(selector, SelectionKey.OP_READ);
+        } catch (IOException e) {
+            System.err.println("Failed to start server.");
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        System.out.println("Server is active.");
+        while (true) {
+            try {
+                String line;
+                if (localInput.ready())
+                    if ((line = localInput.readLine()) != null)
+                        localExecutor.execute(CommandReader.readCommandFromString(line));
+                selector.select(1500);
+                for (SelectionKey key : selector.selectedKeys()) {
+                    if (!key.isValid()) continue;
+                    if (key.isReadable()) answerCommand(byteBuffer, key);
+                }
+            } catch (IOException e) {
+                System.err.println("IOException " + e.getMessage());
+            } catch (Exception e) {
+                System.err.println("Unexpected error: " + e.getMessage());
+                e.printStackTrace();
+                System.exit(-1);
+            }
+        }
+    }
+
+    /**
+     * Answers a command from client
+     * @param buffer Byte buffer to put data to
+     * @param key Selection key
+     * @throws IOException If problem occurred while sending data to client
+     */
+    private static void answerCommand(ByteBuffer buffer, SelectionKey key)
+            throws IOException {
+        DatagramChannel client = (DatagramChannel) key.channel();
+        SocketAddress address = client.receive(buffer);
+        if (address == null) return;
+        byte[] data = buffer.array();
+        ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(data));
+        byte[] response;
+        try {
+            CommandReader.Command command = (CommandReader.Command) iStream.readObject();
+            System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "]" + address.toString() + ": " + command.toString() + ".");
+            //Отправляем данные клиенту
+            try {
+                userExecutor.execute(command);
+                response = outputStream.toByteArray();
+                outputStream.reset();
+            } catch (IllegalArgumentException e) {
+                response = e.getMessage().getBytes();
+            }
+        } catch (StreamCorruptedException | ClassNotFoundException e) {
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+            response = "Server received invalid packet. Please try again.".getBytes();
+        }
+
+        client.send(ByteBuffer.wrap(response), address);
+        buffer.clear();
+    }
+
+    /**
+     * Reads a collection from file
+     * @see Read
+     * @param args Filename
+     */
+    private static void readCollectionFromFile(String[] args) {
         if (args.length == 0)
             System.out.println("Input filename not specified by command line argument. Skipping...");
         else {
             try {
-                ClientClass.setFile(args[0]);
+                CommandExecutor.setFile(args[0]);
                 try {
                     System.out.println(new Read().execute());
                 } catch (Exception e) {
@@ -49,147 +127,5 @@ public class Server {
                 System.out.println("Input filename is empty. Skipping...");
             }
         }
-        try {
-            Selector selector = Selector.open();
-            selector.wakeup();
-            datagramChannel = DatagramChannel.open();
-            //DatagramSocket datagramSocket = datagramChannel.socket();
-            datagramChannel.bind(new InetSocketAddress("localhost", 3333));
-            datagramChannel.configureBlocking(false);
-            datagramChannel.register(selector, SelectionKey.OP_READ);
-            ByteBuffer byteBuffer = ByteBuffer.allocate(65536);
-            System.out.println("Server is active.");
-            //noinspection InfiniteLoopStatement
-            while (true) {
-
-                    selector.select();
-                   // Set<SelectionKey> selectedKeys = selector.selectedKeys();
-                   Iterator<SelectionKey> keyIterator = selector.selectedKeys().iterator();
-                    //SocketAddress address = datagramChannel.receive(byteBuffer);
-                    //if(address!=null) {
-                    //    System.out.println("got something for ya!");
-                    //    answerCommand(byteBuffer,address);
-                   // }
-                    while(keyIterator.hasNext()) {
-                        SelectionKey key = keyIterator.next();
-                        if(key.isReadable()) answerCommand(byteBuffer,key);
-
-                    }
-                   /* while (iter.hasNext()) {
-                        SelectionKey key = iter.next();
-                        System.out.println(key.toString());
-                        try {
-                        if(!key.isValid())
-                            continue;
-                        if (key.isAcceptable()) {
-                            register(selector, datagramChannel);
-                        }
-
-                        if (key.isReadable()) {
-                            answerCommand(byteBuffer, key);
-                        }
-                        iter.remove();
-                        }catch (IOException e){
-                            System.out.println(e.getMessage());
-                        }
-                    }*/
-
-            }
-/*
-
-            DatagramSocket datagramSocket = new DatagramSocket(3333);
-            byte[] buffer = new byte[65536];
-            DatagramPacket incoming = new DatagramPacket(buffer, buffer.length);
-            System.out.println("Ожидаем данные...");
-
-            //noinspection InfiniteLoopStatement
-            while(true)
-            {
-                //Получаем данные
-                datagramSocket.receive(incoming);
-                byte[] data = incoming.getData();
-                ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(data));
-                byte[] response;
-                try {
-                    CommandReader.UserCommand userCommand = (CommandReader.UserCommand) iStream.readObject();
-                    System.out.println("Сервер получил: " + userCommand.toString());
-
-                    //Отправляем данные клиенту
-                    try {
-                        userClass.execute(userCommand);
-                        response = outputStream.toByteArray();
-                    } catch (IllegalArgumentException e) {
-                        response = e.getMessage().getBytes();
-                    }
-                } catch (StreamCorruptedException e) {
-                    System.err.println(e.getMessage());
-                    e.printStackTrace();
-                    response = "Server received invalid packet. Please try again.".getBytes();
-                }
-                DatagramPacket dp = new DatagramPacket(response , response.length , incoming.getAddress() , incoming.getPort());
-                outputStream.reset();
-                datagramSocket.send(dp);
-            } */
-        } catch (IOException e)
-        {
-            System.err.println("Exception " + e);
-            e.printStackTrace();
-        }
-
-        ClientClass serverClass = new ClientClass(ClientClass.allCommands, System.out, System.in);
-
-        //noinspection InfiniteLoopStatement
-        for(;;)
-        serverClass.execute(serverClass.getCommandReader().readCommandFromBufferedReader());
     }
-
-     private static void answerCommand(ByteBuffer buffer, SelectionKey key/*, SocketAddress address*/)
-             throws IOException {
-
-         DatagramChannel client = (DatagramChannel) key.channel();
-         SocketAddress address = client.receive(buffer);
-         try {
-             client.connect(address);
-         } catch (AlreadyConnectedException ignored) {}
-         byte[] data = buffer.array();
-         ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(data));
-         byte[] response;
-         try {
-             CommandReader.UserCommand userCommand = (CommandReader.UserCommand) iStream.readObject();
-             System.out.println(/*address.toString()+*/": " + userCommand.toString()+".");
-
-             //Отправляем данные клиенту
-             try {
-                 userClass.execute(userCommand);
-                 response = outputStream.toByteArray();
-                 outputStream.reset();
-             } catch (IllegalArgumentException e) {
-                 response = e.getMessage().getBytes();
-             }
-         } catch (StreamCorruptedException | ClassNotFoundException e) {
-             System.err.println(e.getMessage());
-             e.printStackTrace();
-             response = "Server received invalid packet. Please try again.".getBytes();
-         }
-
-         client.write(ByteBuffer.wrap(response));
-         buffer.clear();
-     }
-
-      private static void register(Selector selector, DatagramChannel serverSocket)
-             throws IOException {
-         serverSocket.configureBlocking(false);
-         serverSocket.register(selector, SelectionKey.OP_READ);
-     }
-
-     public static Process start() throws IOException, InterruptedException {
-         String javaHome = System.getProperty("java.home");
-         String javaBin = javaHome + File.separator + "bin" + File.separator + "java";
-         String classpath = System.getProperty("java.class.path");
-         String className = Server.class.getCanonicalName();
-
-         ProcessBuilder builder = new ProcessBuilder(javaBin, "-cp", classpath, className);
-
-         return builder.start();
-     }
 }

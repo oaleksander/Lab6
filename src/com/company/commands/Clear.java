@@ -2,7 +2,7 @@ package com.company.commands;
 
 import com.company.storables.DragonHolder;
 
-public class Clear implements Command {
+public class Clear implements CommandAction {
     public String getLabel() {
         return "clear";
     }

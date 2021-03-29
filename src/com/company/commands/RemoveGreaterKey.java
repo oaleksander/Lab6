@@ -4,7 +4,7 @@ import com.company.storables.DragonHolder;
 
 import java.util.LinkedList;
 
-public class RemoveGreaterKey implements Command {
+public class RemoveGreaterKey implements CommandAction {
     @Override
     public String getLabel() {
         return "remove_greater_key";

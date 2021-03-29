@@ -30,7 +30,7 @@ public class Dragon implements Comparable<Dragon> {
                 setId(DragonUtils.getNewId());
             else
                 try {
-                    if(Long.parseLong(splitString[0]) == -1L)
+                    if (Long.parseLong(splitString[0]) == -1L)
                         setId(DragonUtils.getNewId());
                     setId(Long.parseLong(splitString[0]));
                 } catch (NumberFormatException e) {
@@ -327,6 +327,6 @@ public class Dragon implements Comparable<Dragon> {
      * @return CSV string
      */
     public String toCsvString() {
-        return getId() + ",\"" + getName() + "\"," + getCoordinates().getX() + "," + getCoordinates().getY() + "," + DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault()).format(getCreationDate()) + "," + getAge() + ",\"" + (getDescription() == null ? "" : getDescription()) + "\"," + getWeight() + "," + getType().getLabel() + "," + getHead().getEyesCount();
+        return getId() + ",\"" + getName() + "\"," + getCoordinates().getX() + "," + getCoordinates().getY() + "," + DateFormat.getDateInstance(DateFormat.SHORT).format(getCreationDate()) + "," + getAge() + ",\"" + (getDescription() == null ? "" : getDescription()) + "\"," + getWeight() + "," + getType().getLabel() + "," + getHead().getEyesCount();
     }
 }

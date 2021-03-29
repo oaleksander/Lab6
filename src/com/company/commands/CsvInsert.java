@@ -1,9 +1,9 @@
 package com.company.commands;
 
-import com.company.storables.DragonHolder;
 import com.company.storables.Dragon;
+import com.company.storables.DragonHolder;
 
-public class CsvInsert implements Command {
+public class CsvInsert implements CommandAction {
     public String getLabel() {
         return "insert_csv";
     }

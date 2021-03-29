@@ -1,13 +1,13 @@
 package com.company.commands;
 
+import com.company.ui.CommandExecutor;
 import com.company.ui.CommandReader;
-import com.company.ui.ClientClass;
 
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 
-public class Execute_script implements Command {
+public class Execute_script implements CommandAction {
     @Override
     public String getLabel() {
         return "execute_script";
@@ -43,7 +43,7 @@ public class Execute_script implements Command {
         }
         try {
             BufferedInputStream fileReader = new BufferedInputStream(new FileInputStream(file));
-            ClientClass clientClass = new ClientClass(ClientClass.scriptCommands, printStream, fileReader);
+            CommandExecutor commandExecutor = new CommandExecutor(CommandExecutor.scriptCommands, printStream);
             StringBuilder stringBuilder = new StringBuilder();
             while (fileReader.available() > 0)
                 stringBuilder.append((char) fileReader.read());
@@ -55,7 +55,7 @@ public class Execute_script implements Command {
                                 .replaceAll("\\breplace_if_greater\\b", "replace_if_greater_csv")
                                 .replaceAll("\\bupdate\\b", "update_csv")
                                 .replaceAll("\\binsert\\b", "insert_csv");
-                        clientClass.execute(CommandReader.readCommandFromString(formattedLine));
+                        commandExecutor.execute(CommandReader.readCommandFromString(formattedLine));
                     });
             fileReader.close();
         } catch (FileNotFoundException e) {

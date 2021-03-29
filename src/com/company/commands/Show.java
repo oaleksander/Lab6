@@ -3,10 +3,9 @@ package com.company.commands;
 import com.company.storables.Dragon;
 import com.company.storables.DragonHolder;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
-public class Show implements Command {
+public class Show implements CommandAction {
     String response;
 
     public String getLabel() {

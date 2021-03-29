@@ -1,6 +1,6 @@
 package com.company.commands;
 
-public class Exit implements Command {
+public class Exit implements CommandAction {
 
     @Override
     public String getLabel() {

@@ -1,13 +1,13 @@
 package com.company.commands;
 
-import com.company.storables.DragonHolder;
 import com.company.storables.Dragon;
-import com.company.ui.ClientClass;
+import com.company.storables.DragonHolder;
+import com.company.ui.CommandExecutor;
 
 import java.io.*;
 import java.util.Arrays;
 
-public class Read implements Command {
+public class Read implements CommandAction {
 
     String response;
 
@@ -24,7 +24,7 @@ public class Read implements Command {
     @Override
     public String execute(String argument) {
         response = "";
-        File file = ClientClass.getFile();
+        File file = CommandExecutor.getFile();
         try {
             BufferedInputStream fileReader = new BufferedInputStream(new FileInputStream(file));
             StringBuilder stringBuilder = new StringBuilder();

@@ -3,7 +3,7 @@ package com.company.commands;
 /**
  * Command that every program action implements
  */
-public interface Command {
+public interface CommandAction {
 
     /**
      * Command label

@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Class designed to get commands from buffered readers and strings
  *
- * @see ClientClass
+ * @see CommandExecutor
  */
 public class CommandReader {
 
@@ -38,7 +38,7 @@ public class CommandReader {
      * @param singleString string to parse from
      * @return Command
      */
-    public static UserCommand readCommandFromString(String singleString) {
+    public static Command readCommandFromString(String singleString) {
         return (readCommandFromString(singleString.split(" ", 2)));
     }
 
@@ -48,14 +48,14 @@ public class CommandReader {
      * @param input strings to parse from
      * @return Command
      */
-    public static UserCommand readCommandFromString(String[] input) {
+    public static Command readCommandFromString(String[] input) {
         if (input.length != 0) {
             input[0] = input[0].toLowerCase();
             if (input.length > 1)
-                return new UserCommand(input[0], input[1]);
+                return new Command(input[0], input[1]);
             else
-                return new UserCommand(input[0]);
-        } else return new UserCommand();
+                return new Command(input[0]);
+        } else return new Command();
     }
 
     /**
@@ -77,49 +77,46 @@ public class CommandReader {
      *
      * @return Command
      */
-    public UserCommand readCommandFromBufferedReader() {
+    public Command readCommandFromBufferedReader() {
         return readCommandFromString(getStringFromBufferedReader());
     }
 
     /**
      * User command class
      */
-    public static class UserCommand implements Serializable{
-        public String Command = "";
-        public String Argument = "";
+    public static class Command implements Serializable {
+        public String CommandString = "";
+        public String ArgumentString = "";
 
         /**
          * User command constructor with argument
          *
-         * @param Command  Command
-         * @param Argument Argument
+         * @param CommandString  Command
+         * @param ArgumentString Argument
          */
-        public UserCommand(String Command, String Argument) {
-            this.Command = Command;
-            this.Argument = Argument;
+        public Command(String CommandString, String ArgumentString) {
+            this.CommandString = CommandString;
+            this.ArgumentString = ArgumentString;
         }
 
         /**
          * User command constructor without argument
          *
-         * @param Command Command
+         * @param CommandString Command
          */
-        public UserCommand(String Command) {
-            this.Command = Command;
+        public Command(String CommandString) {
+            this.CommandString = CommandString;
         }
 
         /**
          * Empty user command constructor
          */
-        public UserCommand() {
+        public Command() {
         }
 
         @Override
         public String toString() {
-            return "Command{" +
-                    "Command='" + Command + '\'' +
-                    ", Arguments='" + Argument + '\'' +
-                    '}';
+            return "Command{" + CommandString + (ArgumentString.isBlank() ? "" : " ") + ArgumentString + "}";
         }
     }
 }

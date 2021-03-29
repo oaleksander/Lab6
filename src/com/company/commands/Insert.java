@@ -1,9 +1,9 @@
 package com.company.commands;
 
-import com.company.storables.DragonUtils;
 import com.company.storables.DragonHolder;
+import com.company.storables.DragonUtils;
 
-public class Insert implements Command {
+public class Insert implements CommandAction {
     public String getLabel() {
         return "insert";
     }

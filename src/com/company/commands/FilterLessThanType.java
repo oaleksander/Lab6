@@ -1,9 +1,9 @@
 package com.company.commands;
 
-import com.company.storables.DragonHolder;
 import com.company.storables.Coordinates;
 import com.company.storables.Dragon;
 import com.company.storables.DragonHead;
+import com.company.storables.DragonHolder;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.regex.PatternSyntaxException;
 
-public class FilterLessThanType implements Command {
+public class FilterLessThanType implements CommandAction {
     String response;
 
     public String getLabel() {

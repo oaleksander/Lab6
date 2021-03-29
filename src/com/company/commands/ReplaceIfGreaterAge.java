@@ -1,10 +1,10 @@
 package com.company.commands;
 
-import com.company.storables.DragonUtils;
-import com.company.storables.DragonHolder;
 import com.company.storables.Dragon;
+import com.company.storables.DragonHolder;
+import com.company.storables.DragonUtils;
 
-public class ReplaceIfGreaterAge implements Command {
+public class ReplaceIfGreaterAge implements CommandAction {
     @Override
     public String getLabel() {
         return "replace_if_greater";

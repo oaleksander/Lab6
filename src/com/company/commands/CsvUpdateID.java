@@ -1,13 +1,13 @@
 package com.company.commands;
 
-import com.company.storables.DragonHolder;
 import com.company.storables.Dragon;
+import com.company.storables.DragonHolder;
 
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class CsvUpdateID implements Command {
+public class CsvUpdateID implements CommandAction {
     @Override
     public String getLabel() {
         return "update_csv";

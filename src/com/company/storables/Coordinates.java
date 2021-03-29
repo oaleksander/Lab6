@@ -11,6 +11,7 @@ public class Coordinates implements Comparable<Coordinates> {
 
     private double x;
     private Long y; //Can't be null
+
     /**
      * Coordinates from string constructor
      *
