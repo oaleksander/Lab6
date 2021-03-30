@@ -1,62 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5ca02d5-96b5-405d-a8c0-b41b65105589" name="Default Changelist" comment="Nothing's working">
+    <list default="true" id="b5ca02d5-96b5-405d-a8c0-b41b65105589" name="Default Changelist" comment="Created diagram">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/collectionmanagement/DragonFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/collectionmanagement/DragonHolder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Clear.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Clear.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/CsvInsert.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/CsvInsert.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/CsvReplaceIfGreaterAge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/CsvReplaceIfGreaterAge.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/CsvUpdateID.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/CsvUpdateID.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Execute_script.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Execute_script.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/FilterLessThanType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/FilterLessThanType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Help.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Help.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Info.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Insert.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Insert.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/PrintDescending.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/PrintDescending.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Read.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Read.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/RemoveAllAge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/RemoveAllAge.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/RemoveGreaterKey.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/RemoveGreaterKey.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/RemoveKey.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/RemoveKey.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/RemoveLowerKey.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/RemoveLowerKey.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/ReplaceIfGreaterAge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/ReplaceIfGreaterAge.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Save.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Save.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/Show.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/UpdateID.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/commands/UpdateID.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/storables/Coordinates.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/storables/Coordinates.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/storables/Dragon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/storables/Dragon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/ui/CommandReader$UserCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/ui/CommandReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab6/com/company/ui/CommandReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab6/com/company/ui/UserRunnable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/Clear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/CommandAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/CsvInsert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/CsvInsert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/CsvReplaceIfGreaterAge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/CsvReplaceIfGreaterAge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/CsvUpdateID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/CsvUpdateID.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/Execute_script.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/Execute_script.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/Exit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/FilterLessThanType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/FilterLessThanType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/Insert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/PrintDescending.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/PrintDescending.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/Read.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/Read.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/RemoveAllAge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/RemoveAllAge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/RemoveGreaterKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/RemoveGreaterKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/RemoveKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/RemoveKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/RemoveLowerKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/RemoveLowerKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/ReplaceIfGreaterAge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/ReplaceIfGreaterAge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/Save.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/Show.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/commands/UpdateID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/commands/UpdateID.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/storables/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/storables/Coordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/storables/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/storables/Dragon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/storables/DragonHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/storables/DragonHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/ui/ClientClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ui/CommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/ui/CommandReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ui/CommandReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +124,8 @@
       <workItem from="1616176150165" duration="63000" />
       <workItem from="1616176318367" duration="3946000" />
       <workItem from="1616407370635" duration="598000" />
-      <workItem from="1616695429514" duration="35037000" />
+      <workItem from="1616695429514" duration="36091000" />
+      <workItem from="1617042526993" duration="90000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1606397192565</created>
@@ -222,7 +169,21 @@
       <option name="project" value="LOCAL" />
       <updated>1617010015458</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Everything's working">
+      <created>1617017394660</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617017394660</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Created diagram">
+      <created>1617017438837</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1617017438837</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,6 +208,8 @@
     <MESSAGE value="Potentially done" />
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Nothing's working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nothing's working" />
+    <MESSAGE value="Everything's working" />
+    <MESSAGE value="Created diagram" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created diagram" />
   </component>
 </project>
